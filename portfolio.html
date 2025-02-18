@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio - Developer & Designer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --red-bold: #D90429;
+            --red-light: #EF233C;
+            --gray-light: #EDF2F4;
+            --gray-medium: #8D99AE;
+            --navy-dark: #2B2D42;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--navy-dark);
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(43, 45, 66, 0.95), rgba(43, 45, 66, 0.9)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--gray-light);
+        }
+
+        .navbar {
+            background-color: var(--navy-dark) !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: var(--gray-light) !important;
+            font-weight: 500;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: var(--red-light) !important;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .skill-badge {
+            font-size: 0.95rem;
+            margin: 0.25rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--navy-dark) !important;
+            color: var(--gray-light);
+            border-radius: 25px;
+        }
+
+        .project-img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .bg-light {
+            background-color: var(--gray-light) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--red-bold);
+            border-color: var(--red-bold);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--red-light);
+            border-color: var(--red-light);
+        }
+
+        .card-body {
+            background-color: white;
+        }
+
+        .badge.bg-primary {
+            background-color: var(--navy-dark) !important;
+            color: var(--gray-light);
+        }
+
+        section h2 {
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        .form-control:focus {
+            border-color: var(--red-light);
+            box-shadow: 0 0 0 0.2rem rgba(239, 35, 60, 0.25);
+        }
+
+        #about {
+            background: var(--gray-light);
+        }
+
+        footer {
+            background-color: var(--navy-dark) !important;
+            color: var(--gray-light) !important;
+        }
+
+        .lead {
+            color: var(--gray-medium);
+        }
+
+        .card-title {
+            color: var(--navy-dark);
+            font-weight: 600;
+        }
+
+        /* Custom accent elements */
+        .accent-line {
+            width: 50px;
+            height: 3px;
+            background-color: var(--red-bold);
+            margin: 1rem auto;
+        }
+
+        /* Button hover animation */
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+        }
+
+        /* Card hover effects */
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(43, 45, 66, 0.1);
+        }
+
+        /* Section transitions */
+        section {
+            position: relative;
+        }
+
+        /* Enhanced typography */
+        .hero .display-3 {
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--red-bold);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero .display-3 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-3">Mrinali Charhate</h1>
+            <h2 class="h3 mb-4">Developer & UI Designer</h2>
+            <p class="lead mb-4">Crafting digital experiences with code and creativity</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+<section id="projects" class="bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">My Projects</h2>
+        <div class="row g-4">
+            <!-- Fitness Blog -->
+            <div class="col-md-6">
+                <div class="card project-card h-100">
+                    <img src="./images/fitness.png" class="card-img-top project-img" alt="Fitness Blog Project">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Fitness Blog</h3>
+                        <p class="card-text">A dynamic fitness blog featuring health tips, workout routines, and nutrition advice.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-primary">HTML5</span>
+                            <span class="badge bg-primary">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Gaming News Website -->
+            <div class="col-md-6">
+                <div class="card project-card h-100">
+                    <img src="./images/gamegrid.png" class="card-img-top project-img" alt="Gaming News Website">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Gaming News Website</h3>
+                        <p class="card-text">A modern gaming news platform with latest updates and reviews.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-primary">HTML5</span>
+                            <span class="badge bg-primary">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Login/Sign Up Page -->
+            <div class="col-md-6">
+                <div class="card project-card h-100">
+                    <img src="./images/login.png" class="card-img-top project-img" alt="Login/Sign Up Page">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Login/Sign Up Page</h3>
+                        <p class="card-text">A secure and user-friendly authentication system with modern UI.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-primary">HTML5</span>
+                            <span class="badge bg-primary">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Resort Website -->
+            <div class="col-md-6">
+                <div class="card project-card h-100">
+                    <img src="./images/resort.png" class="card-img-top project-img" alt="Resort Website Design">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Resort Website Design</h3>
+                        <p class="card-text">A visually stunning resort website design created using Canva.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-primary">Canva</span>
+                            <span class="badge bg-primary">UI Design</span>
+                            <span class="badge bg-primary">Web Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="text-center mb-5">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <img src="pfp.jpg" alt="Profile Photo" class="about-img">
+                </div>
+                <div class="col-md-8">
+                    <h3 class="mb-4">Full Stack Developer & Designer</h3>
+                    <p class="lead mb-4">I'm a passionate developer with expertise in both front-end and back-end technologies. I love creating responsive, user-friendly applications and exploring new technologies.</p>
+                    <h4 class="mb-3">Technical Skills</h4>
+                    <div class="mb-4">
+                        <span class="badge bg-secondary skill-badge">C</span>
+                        <span class="badge bg-secondary skill-badge">C++</span>
+                        <span class="badge bg-secondary skill-badge">JavaScript</span>
+                        <span class="badge bg-secondary skill-badge">React</span>
+                        <span class="badge bg-secondary skill-badge">Python</span>
+                        <span class="badge bg-secondary skill-badge">SQL</span>
+                        <span class="badge bg-secondary skill-badge">HTML5</span>
+                        <span class="badge bg-secondary skill-badge">CSS3</span>
+                        <span class="badge bg-secondary skill-badge">Canva</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Get in Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
